@@ -1,13 +1,22 @@
 language: node_js
-node_js: "stable"
+
+node_js: stable
 
 before_script:
-  - npm install -g gulp
+- npm install -g gulp
+
 script: gulp build
 
 deploy:
-  provider: pages
+- provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  github_token: $GITHUB_TOKEN
   on:
     branch: master
+- provider: heroku
+  app: crazycss
+  skip_cleanup: true
+  api_key:
+    secure: cvKub1gjiO4mJYdsVOcDR+dU7q8y6YT80UcsxNKMb9cdZv9PgBXDRlWzfgU+ujn6VqTA8t3K4uM3uvdsRDWcQjbm8HfNy8T9QaU9jqa6Y57grE6cc84SZ3wltuJZI4Xh3PFGkaLRHeSbEMHtowa2ad1xqpfLo8gvBX25stvNJY7bV4r1ifmrUteNnf5Ym6ADN7n2kPchb0UomqmBzhB9LeKXlTOefWobpDkc/lQQQxZKP+gD+aHeVaVjMv+egfuZYe7TKNwEByfSsqzLtdqExKfXPePzynfV7XCfhzGfTs1P0P/7d8RqcHlIiEzs6EkGboCdPvnWRDFYPD87hdJFUxN0S8UqEGrXItRrnTrRWPmj0VfR2f4pJ5hPEPzh6q7Yg6Il+SpMtOrDLu9dLTXCr+otPE8apNZY4GhA0RSn3sEgbzEsQF9iGp/N3bzBmcBPDYEB3YTeznmlfO4pGIbkbMxOwclV2k3GM9PftqCnz48gL/bEe0R/84JjCqGwRH918epfd9ePo7ng0tMuAa3vyzJ9U4uduraQHcMhxH98Y9TjpzhURPkVfSIXaX3j0dtwPb8ov5gFareoFaWVsiuABdvaXf4+3wbMoxo7ADM6Tmewr6xi2nhm9J1EdO3zV3+KASOeahPFwsrAYSLcXS41eYJAtvB3b6bMsKlzmijJskU=
+  on:
+    branch: development
