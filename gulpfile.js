@@ -42,4 +42,4 @@ gulp.task('collect', () => {
 });
 
 gulp.task('default', ['sass', 'serve']);
-gulp.task('build', ['collect', 'scss', 'minify-css']);
+gulp.task('build', ['collect', 'sass', 'minify-css']);
