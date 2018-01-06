@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+//color
+$blue: #0080ff !default;
+$grey: #808080 !default;
+$green: #33cc33 !default;
+$red: #ff0000 !default;
+$orange: #ff9900 !default;
+$black: #000000;
+$white: #ffffff;
+
+$blue-muted: lighten($blue, 50%) !default;
+$grey-muted: lighten($grey, 50%) !default;
+$green-muted: lighten($green, 50%) !default;
+$red-muted: lighten($red, 50%) !default;
+$orange-muted: lighten($orange, 50%) !default;
+
+//fonts
+$global-font-size: 1rem !default;
+$global-font: 'Gloria Hallelujah' !default;
+$font-color: $black !default;
+
+//breakpoints
+$breakpoints: (
+  "phone": 400px,
+  "phone-wide": 480px,
+  "phablet": 560px,
+  "tablet-small": 640px,
+  "tablet": 768px,
+  "tablet-wide": 1024px,
+  "desktop": 1248px,
+  "desktop-wide": 1440px
+  ) !default;
+
+//mixin to respond to breakpoints
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+//mixin for centering
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
