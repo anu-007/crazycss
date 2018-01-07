@@ -1,0 +1,17 @@
+$columns: 12;
+// need to generate classes
+/*$column-size: 5em;
+
+@mixin col-x {
+  $col-list: null;
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      width: $column-size * $i;
+    }
+   $col-list: append($col-list, unquote(".col-#{$i}"), comma);
+  }
+  #{$col-list} {
+    float: left;
+  }
+}
+*/
